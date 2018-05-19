@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { QuizService } from '../shared/quiz.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'subject-page',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubjectPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private quizService: QuizService, private route : Router) { }
+
+  subjects = ['DotNet', 'Java'];
 
   ngOnInit() {
   }
-
 }

@@ -22,5 +22,6 @@ namespace WebAPI.Models
         public string Option3 { get; set; }
         public string Option4 { get; set; }
         public Nullable<int> Answer { get; set; }
+        public string Subject { get; set; }
     }
 }

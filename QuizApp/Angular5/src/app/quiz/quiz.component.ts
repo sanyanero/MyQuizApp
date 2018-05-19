@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { QuizService } from '../shared/quiz.service';
 
 @Component({
@@ -9,9 +9,16 @@ import { QuizService } from '../shared/quiz.service';
 })
 export class QuizComponent implements OnInit {
 
-  constructor(private router: Router, private quizService: QuizService) { }
+  constructor(private router: Router, private quizService: QuizService, private route: ActivatedRoute,) { }
+
+  subject: string;
+  private sub: any;
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.subject = params['subject']; // (+) converts string 'subject' to a number
+    });
+
     if (parseInt(localStorage.getItem('seconds')) > 0) {
       this.quizService.seconds = parseInt(localStorage.getItem('seconds'));
       this.quizService.qnProgress = parseInt(localStorage.getItem('qnProgress'));
@@ -24,7 +31,8 @@ export class QuizComponent implements OnInit {
     else {
       this.quizService.seconds = 0;
       this.quizService.qnProgress = 0;
-      this.quizService.getQuestions().subscribe(
+      
+      this.quizService.getQuestions(this.subject).subscribe(
         (data: any) => {
           this.quizService.qns = data;
           this.startTimer();

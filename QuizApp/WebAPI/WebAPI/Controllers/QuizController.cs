@@ -8,15 +8,19 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
+    //[Route("api/[controller]")]
     public class QuizController : ApiController
     {
         [HttpGet]
-        [Route("api/Questions")]
-        public HttpResponseMessage GetQuestions() {
+        //[Route("api/Questions")]
+        //[Route("{subject:string}")]
+        [Route("api/Questions/{subjectName}")]
+        public HttpResponseMessage GetQuestions(string subjectName) {
             using (DBModel db = new DBModel())
             {
                 var Qns = db.Questions
-                    .Select(x => new { QnID = x.QnID, Qn = x.Qn, ImageName = x.ImageName, x.Option1, x.Option2, x.Option3, x.Option4 })
+                    .Select(x => new { QnID = x.QnID, Qn = x.Qn, ImageName = x.ImageName, x.Option1, x.Option2, x.Option3, x.Option4, x.Subject })
+                    .Where(c => c.Subject == subjectName)
                     .OrderBy(y => Guid.NewGuid())
                     .Take(10)
                     .ToArray();

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/13/2018 16:34:31
--- Generated from EDMX file: D:\GithubProjects\QuizApp\WebAPI\WebAPI\Models\DBModels.edmx
+-- Date Created: 05/19/2018 13:36:45
+-- Generated from EDMX file: D:\GithubProjects\MyQuizApp\QuizApp\WebAPI\WebAPI\Models\DBModels.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -22,11 +22,11 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Participant]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Participant];
+IF OBJECT_ID(N'[dbo].[Questions]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Questions];
 GO
-IF OBJECT_ID(N'[dbo].[Question]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Question];
+IF OBJECT_ID(N'[dbo].[Participants]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Participants];
 GO
 
 -- --------------------------------------------------
@@ -42,7 +42,8 @@ CREATE TABLE [dbo].[Questions] (
     [Option2] varchar(50)  NULL,
     [Option3] varchar(50)  NULL,
     [Option4] varchar(50)  NULL,
-    [Answer] int  NULL
+    [Answer] int  NULL,
+    [Subject] nvarchar(max)  NOT NULL
 );
 GO
 

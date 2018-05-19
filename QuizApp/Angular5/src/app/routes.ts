@@ -8,7 +8,7 @@ import { SubjectPageComponent } from './subject-page/subject-page.component';
 export const appRoutes : Routes =[
     {path:'register',component:RegisterComponent},
     {path:'subject-page',component:SubjectPageComponent,canActivate : [AuthGuard]},
-    {path:'quiz',component:QuizComponent,canActivate : [AuthGuard]},
+    {path:'quiz/:subject',component:QuizComponent,canActivate : [AuthGuard]},
     {path:'result',component:ResultComponent,canActivate : [AuthGuard]},
-    {path:'',redirectTo:'/subject-page',pathMatch:'full'}
+    {path:'',redirectTo:'/register',pathMatch:'full'}
 ];
