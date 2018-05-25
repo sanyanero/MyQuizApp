@@ -11,7 +11,7 @@ export class SubjectPageComponent implements OnInit {
 
   constructor(private quizService: QuizService, private route : Router) { }
 
-  subjects = ['DotNet', 'Java'];
+  subjects = ['DotNet', 'Java', 'CPP'];
 
   ngOnInit() {
   }
